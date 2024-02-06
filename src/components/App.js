@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-// Replace with your actual data
 const tourData = [
   {
     id: "rec6d6T3q5EBIdCfD",
@@ -72,9 +71,15 @@ function App() {
         return (
           <article key={id} className="single-tour">
             <h4>{name}</h4>
-            <p className="tour-info">{info.substring(0, 200)}...</p>
+            <p id={"tour-item-para-" + id} className="tour-info">
+              {info.substring(0, 200)}...
+            </p>
             <p className="tour-price">{price}</p>
-            <button className="delete-btn" onClick={() => removeTour(id)}>
+            <button
+              id={"delete-btn-" + id}
+              className="delete-btn"
+              onClick={() => removeTour(id)}
+            >
               Not interested
             </button>
           </article>
