@@ -78,7 +78,7 @@ function App() {
               {showInfo[id] ? info : `${info.substring(0, 200)}...`}
             </p>
             <button id={"see-more-" + id} onClick={() => toggleInfo(id)}>
-              {showInfo[id] ? "See less" : "See more"}
+              {showInfo[id] ? "Show less" : "See more"}
             </button>
             <p className="tour-price">{price}</p>
             <button
