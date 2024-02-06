@@ -41,15 +41,18 @@ const tourData = [
       "https://dl.airtable.com/.attachments/3feee7a93af0f4f809312132090c9a80/58e3e8ec/poland.jpeg",
     price: "2,595",
   },
-  // more tours...
 ];
-
 function App() {
   const [tours, setTours] = useState(tourData);
+  const [showInfo, setShowInfo] = useState({});
 
   const removeTour = (id) => {
     const newTours = tours.filter((tour) => tour.id !== id);
     setTours(newTours);
+  };
+
+  const toggleInfo = (id) => {
+    setShowInfo({ ...showInfo, [id]: !showInfo[id] });
   };
 
   if (tours.length === 0) {
@@ -72,8 +75,11 @@ function App() {
           <article key={id} className="single-tour">
             <h4>{name}</h4>
             <p id={"tour-item-para-" + id} className="tour-info">
-              {info.substring(0, 200)}...
+              {showInfo[id] ? info : `${info.substring(0, 200)}...`}
             </p>
+            <button onClick={() => toggleInfo(id)}>
+              {showInfo[id] ? "See less" : "Show more"}
+            </button>
             <p className="tour-price">{price}</p>
             <button
               id={"delete-btn-" + id}
